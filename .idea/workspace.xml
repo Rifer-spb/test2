@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85fab864-d6bf-4f95-9e4b-0eaf5aca6079" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/composer.phar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Entities/Boxes/Box.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Forms/Boxes/AddForm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Forms/Boxes/EditForm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/ReadModels/BoxesReadRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Repositories/BoxesRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Service/Transaction.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Service/TransactionManager.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/UseCases/BoxesService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/layouts/main.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,20 +25,45 @@
       <executable />
     </execution>
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2bPK3cnmiuhSawySQnxQZCJzZFH" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ToolWindowTODO.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/common/models/Forms/Boxes" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes" />
+      <recent name="E:\OpenServer\domains\test2\backend\views" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Entities\Boxes" />
       <recent name="E:\OpenServer\domains\test2" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Repository" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Service" />
       <recent name="E:\OpenServer\domains\test2" />
     </key>
   </component>
@@ -55,7 +89,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706111075627</updated>
-      <workItem from="1706111077742" duration="655000" />
+      <workItem from="1706111077742" duration="11288000" />
     </task>
     <servers />
   </component>
