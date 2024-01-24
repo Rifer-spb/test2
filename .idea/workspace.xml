@@ -2,17 +2,76 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85fab864-d6bf-4f95-9e4b-0eaf5aca6079" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common/models/Entities/Boxes/Box.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/Forms/Boxes/AddForm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/Forms/Boxes/EditForm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/ReadModels/BoxesReadRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/Repositories/BoxesRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/Service/Transaction.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/Service/TransactionManager.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/UseCases/BoxesService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Entities/Behaviors/SaveRelationsBehavior.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Entities/Behaviors/SaveRelationsTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Forms/Boxes/Products/AddForm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Repositories/ProductsRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/UseCases/ProductsService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/layouts/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/BoxesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/BoxesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/boxes/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/boxes/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/boxes/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/boxes/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/boxes/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/boxes/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/web/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/Entities/Boxes/Boxes.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Entities/Boxes/Boxes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/Entities/Boxes/BoxesProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Entities/Boxes/BoxesProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/Entities/Products/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Entities/Products/Products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/assets/AppAsset.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/codeception.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/config/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/config/bootstrap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/config/main.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/config/params.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/config/test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/controllers/SiteController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/models/ContactForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/models/PasswordResetRequestForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/models/ResendVerificationEmailForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/models/ResetPasswordForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/models/SignupForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/models/VerifyEmailForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/runtime/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/_bootstrap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/_data/login_data.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/_data/user.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/_output/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/_support/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/_support/FunctionalTester.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/_support/UnitTester.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/acceptance.suite.yml.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/acceptance/HomeCest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/acceptance/_bootstrap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/functional.suite.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/functional/AboutCest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/functional/ContactCest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/functional/HomeCest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/functional/LoginCest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/functional/ResendVerificationEmailCest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/functional/SignupCest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/functional/VerifyEmailCest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/functional/_bootstrap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/unit.suite.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/unit/_bootstrap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/unit/models/ContactFormTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/unit/models/PasswordResetRequestFormTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/unit/models/ResendVerificationEmailFormTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/unit/models/ResetPasswordFormTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/unit/models/SignupFormTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tests/unit/models/VerifyEmailFormTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/main.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/site/about.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/site/contact.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/site/error.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/site/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/site/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/site/requestPasswordResetToken.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/site/resendVerificationEmail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/site/resetPassword.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/site/signup.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/web/assets/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/web/css/site.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/web/favicon.ico" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,21 +109,23 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowTODO.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/common/models/Forms/Boxes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/common/models/Repositories" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes" />
       <recent name="E:\OpenServer\domains\test2\backend\views" />
-      <recent name="E:\OpenServer\domains\test2\common\models\Entities\Boxes" />
-      <recent name="E:\OpenServer\domains\test2" />
+      <recent name="E:\OpenServer\domains\test2\backend\controllers" />
+      <recent name="E:\OpenServer\domains\test2\backend\controllers\boxes" />
+      <recent name="E:\OpenServer\domains\test2\backend\controllers\boxes\products" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes\Products" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\OpenServer\domains\test2\common\models\Repositories" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Entities" />
+      <recent name="E:\OpenServer\domains\test2\common\models\UseCases" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes\Products" />
       <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes" />
-      <recent name="E:\OpenServer\domains\test2\common\models\Repository" />
-      <recent name="E:\OpenServer\domains\test2\common\models\Service" />
-      <recent name="E:\OpenServer\domains\test2" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -89,7 +150,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706111075627</updated>
-      <workItem from="1706111077742" duration="11288000" />
+      <workItem from="1706111077742" duration="22419000" />
     </task>
     <servers />
   </component>

@@ -2,7 +2,7 @@
 
 namespace common\models\Entities\Boxes;
 
-use Yii;
+use common\models\Entities\Products\Products;
 
 /**
  * This is the model class for table "{{%boxes_product}}".
@@ -13,6 +13,9 @@ use Yii;
  */
 class BoxesProduct extends \yii\db\ActiveRecord
 {
+    /** @var Products */
+    private $productModel;
+
     /**
      * {@inheritdoc}
      */
@@ -22,25 +25,31 @@ class BoxesProduct extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * @param Products $product
+     * @return BoxesProduct
      */
-    public function rules()
-    {
-        return [
-            [['box', 'product'], 'required'],
-            [['box', 'product'], 'integer'],
-        ];
+    public static function create(Products $product) : self {
+        $model = new static();
+        $model->productModel = $product;
+        return $model;
     }
 
     /**
-     * {@inheritdoc}
+     * @param bool $insert
+     * @return bool
      */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'box' => 'Box',
-            'product' => 'Product',
-        ];
+    public function beforeSave($insert) {
+        if(parent::beforeSave($insert)) {
+            if($insert) {
+                if(!$this->productModel) {
+                    throw new \DomainException('Product not found');
+                }
+                $this->productModel->save();
+                $this->product = $this->productModel->id;
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 }

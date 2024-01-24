@@ -7,10 +7,11 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var common\models\Forms\Boxes\EditForm $model */
 /** @var array $statuses */
+/** @var int $id */
 
 $this->title = 'Update Boxes: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Boxes', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->title]];
+$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="boxes-update">
@@ -44,7 +45,7 @@ $this->params['breadcrumbs'][] = 'Update';
         ); ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Update', ['class' => 'btn btn-primary']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

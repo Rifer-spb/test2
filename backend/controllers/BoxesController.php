@@ -5,7 +5,6 @@ namespace backend\controllers;
 use common\models\Forms\Boxes\EditForm;
 use Yii;
 use common\models\UseCases\BoxesService;
-use yii\db\StaleObjectException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
@@ -124,7 +123,8 @@ class BoxesController extends Controller
 
         return $this->render('update', [
             'model' => $form,
-            'statuses' => $this->boxesReadRepository->findStatusArray()
+            'statuses' => $this->boxesReadRepository->findStatusArray(),
+            'id' => $model->id
         ]);
 
     }

@@ -1,24 +1,24 @@
 <?php
 
-use common\models\Entities\Boxes\Boxes;
+use common\models\Entities\Products\Products;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var common\models\Forms\Boxes\SearchForm $searchModel */
+/** @var common\models\Forms\Boxes\ProductsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Boxes';
+$this->title = 'Products';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="boxes-index">
+<div class="products-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Boxes', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Products', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -28,16 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            [
-                'class' => \yii\grid\CheckboxColumn::class,
-            ],
+
             'id',
-            'date_created',
-            'weight',
-            'status',
+            'title',
+            'sku',
+            'shipped_qty',
+            'received_qty',
+            //'price',
             [
-                'class' => ActionColumn::class,
-                'urlCreator' => function ($action, Boxes $model, $key, $index, $column) {
+                'class' => ActionColumn::className(),
+                'urlCreator' => function ($action, Products $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
