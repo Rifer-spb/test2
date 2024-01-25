@@ -9,8 +9,11 @@ use common\models\Entities\Products\Products;
 /**
  * ProductsSearch represents the model behind the search form of `common\models\Entities\Products\Products`.
  */
-class ProductsSearch extends Products
+class SearchForm extends Products
 {
+    private $boxId;
+    public $pageSize = 5;
+
     /**
      * {@inheritdoc}
      */
@@ -21,6 +24,16 @@ class ProductsSearch extends Products
             [['title', 'sku'], 'safe'],
             [['price'], 'number'],
         ];
+    }
+
+    /**
+     * SearchForm constructor.
+     * @param int $boxId
+     * @param array $config
+     */
+    public function __construct(int $boxId, $config = []) {
+        $this->boxId = $boxId;
+        parent::__construct($config);
     }
 
     /**
@@ -42,11 +55,13 @@ class ProductsSearch extends Products
     public function search($params)
     {
         $query = Products::find();
+        $query->alias('p');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [ 'pageSize' => $this->pageSize ],
         ]);
 
         $this->load($params);
@@ -57,16 +72,19 @@ class ProductsSearch extends Products
             return $dataProvider;
         }
 
+        $query->joinWith('boxProductRelation bp');
+        $query->where(['bp.box' => $this->boxId]);
+
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'shipped_qty' => $this->shipped_qty,
-            'received_qty' => $this->received_qty,
-            'price' => $this->price,
+            'p.id' => $this->id,
+            'p.shipped_qty' => $this->shipped_qty,
+            'p.received_qty' => $this->received_qty,
+            'p.price' => $this->price,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'sku', $this->sku]);
+        $query->andFilterWhere(['like', 'p.title', $this->title]);
+        $query->andFilterWhere(['like', 'p.sku', $this->sku]);
 
         return $dataProvider;
     }

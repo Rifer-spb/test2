@@ -1,23 +1,27 @@
 <?php
 
-namespace backend\controllers;
+namespace backend\controllers\boxes;
 
-use common\models\Forms\Boxes\EditForm;
+use common\models\Forms\Boxes\ChangeStatusForm;
+use common\models\Forms\Boxes\ChangeWeightForm;
 use Yii;
-use common\models\UseCases\BoxesService;
+use yii\web\Response;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use common\models\Entities\Boxes\Boxes;
-use common\models\Forms\Boxes\SearchForm;
+use common\models\Forms\Boxes\SearchForm as SearchBoxesForm;
 use common\models\Forms\Boxes\AddForm;
+use common\models\Forms\Boxes\EditForm;
+use common\models\UseCases\BoxesService;
 use common\models\ReadModels\BoxesReadRepository;
-use yii\web\Response;
+use common\models\Forms\Boxes\Products\SearchForm as SearchProductsForm;
+use yii\widgets\ActiveForm;
 
 /**
  * BoxesController implements the CRUD actions for Boxes model.
  */
-class BoxesController extends Controller
+class DefaultController extends Controller
 {
     private $service;
     private $boxesReadRepository;
@@ -57,12 +61,13 @@ class BoxesController extends Controller
      */
     public function actionIndex() {
 
-        $searchModel = new SearchForm();
+        $searchModel = new SearchBoxesForm();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'statuses' => $this->boxesReadRepository->findStatusArray()
         ]);
 
     }
@@ -73,8 +78,17 @@ class BoxesController extends Controller
      * @throws NotFoundHttpException
      */
     public function actionView($id) {
+
+        $box = $this->findModel($id);
+
+        $searchBoxesForm = new SearchProductsForm($box->id);
+        $dataProductProvider = $searchBoxesForm->search($this->request->queryParams);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'box' => $box,
+            'searchBoxesForm' => $searchBoxesForm,
+            'dataProductProvider' => $dataProductProvider,
+            'statuses' => $this->boxesReadRepository->findStatusArray()
         ]);
     }
 
@@ -146,6 +160,55 @@ class BoxesController extends Controller
         }
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * @param $id
+     * @return Response
+     * @throws NotFoundHttpException
+     */
+    public function actionChangeStatus($id) {
+
+        $model = $this->findModel($id);
+
+        $form = new ChangeStatusForm();
+        if($form->load(Yii::$app->request->post(),'') && $form->validate()) {
+            try {
+                $this->service->changeStatus($model->id, $form);
+            } catch (\Exception $e) {
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->redirect(Yii::$app->request->referrer);
+
+    }
+
+    /**
+     * @param $id
+     * @return array|Response
+     * @throws NotFoundHttpException
+     */
+    public function actionChangeWeight($id) {
+
+        $model = $this->findModel($id);
+
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $form = new ChangeWeightForm();
+        if($form->load(Yii::$app->request->post(),'')) {
+            if(!$form->validate()) {
+                return ['errorValidate' => ActiveForm::validate($form)];
+            }
+            try {
+                $this->service->changeWeight($model->id, $form);
+            } catch (\Exception $e) {
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->redirect(Yii::$app->request->referrer);
+
     }
 
     /**

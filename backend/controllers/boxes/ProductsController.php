@@ -1,7 +1,8 @@
 <?php
 
-namespace backend\controllers;
+namespace backend\controllers\boxes;
 
+use common\models\Forms\Boxes\Products\EditForm;
 use Yii;
 use common\models\Entities\Products\Products;
 use common\models\Forms\Boxes\Products\AddForm;
@@ -88,22 +89,35 @@ class ProductsController extends Controller
     }
 
     /**
-     * Updates an existing Products model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
+     * @param $boxId
+     * @param $productId
      * @return string|Response
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException
      */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
+    public function actionUpdate($boxId, $productId) {
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if(!$box = $this->boxesReadRepository->findBox($boxId)) {
+            throw new NotFoundHttpException('Page not found');
+        }
+
+        if(!$product = $box->findProduct($productId)) {
+            throw new NotFoundHttpException('Page not found');
+        }
+
+        $form = new EditForm($product);
+
+        if($form->load(\Yii::$app->request->post()) and $form->validate()) {
+            try {
+                $this->service->edit($box->id, $form);
+                return $this->redirect(['boxes/view', 'id' => $box->id]);
+            } catch(\Exception $e) {
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
         }
 
         return $this->render('update', [
-            'model' => $model,
+            'model' => $form,
+            'box' => $box
         ]);
     }
 
@@ -119,21 +133,5 @@ class ProductsController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the Products model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Products the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Products::findOne(['id' => $id])) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

@@ -3,6 +3,7 @@
 namespace common\models\Entities\Boxes;
 
 use common\models\Entities\Products\Products;
+use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "{{%boxes_product}}".
@@ -10,6 +11,8 @@ use common\models\Entities\Products\Products;
  * @property int $id
  * @property int $box Коробка
  * @property int $product Продукт
+ *
+ * @property Products $productRelation
  */
 class BoxesProduct extends \yii\db\ActiveRecord
 {
@@ -32,6 +35,23 @@ class BoxesProduct extends \yii\db\ActiveRecord
         $model = new static();
         $model->productModel = $product;
         return $model;
+    }
+
+    /**
+     * @return Products
+     */
+    public function getProduct() {
+        if(!$this->productRelation) {
+            throw new \DomainException('Product not found');
+        }
+        return $this->productRelation;
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getProductRelation() : ActiveQuery {
+        return $this->hasOne(Products::class, ['id' => 'product']);
     }
 
     /**

@@ -2,8 +2,8 @@
 
 namespace common\models\Entities\Boxes;
 
-use common\models\Entities\Products\Products;
 use yii\db\ActiveQuery;
+use common\models\Entities\Products\Products;
 use common\models\Entities\Behaviors\SaveRelationsBehavior;
 
 /**
@@ -82,6 +82,20 @@ class Boxes extends \yii\db\ActiveRecord
     }
 
     /**
+     * @param int $status
+     */
+    public function setStatus(int $status) {
+        $this->status = $status;
+    }
+
+    /**
+     * @param int $value
+     */
+    public function setWeight(float $value) {
+        $this->weight = $value;
+    }
+
+    /**
      * @param string $title
      * @param string $sku
      * @param int $shipped_qty
@@ -101,6 +115,73 @@ class Boxes extends \yii\db\ActiveRecord
             )
         );
         $this->productRelations = $productRelations;
+    }
+
+    /**
+     * @param int $id
+     * @param string $title
+     * @param string $sku
+     * @param int $shipped_qty
+     * @param int $received_qty
+     * @param float $price
+     */
+    public function editProduct(int $id, string $title, string $sku, int $shipped_qty, int $received_qty, float $price) {
+        $product = $this->getProduct($id);
+        $product->edit(
+            $title,
+            $sku,
+            $shipped_qty,
+            $received_qty,
+            $price
+        );
+        if(!$product->save()) {
+            throw new \DomainException('Product save error');
+        }
+    }
+
+    /**
+     * @param int $id
+     * @return Products
+     */
+    public function getProduct(int $id) {
+        $productRelations = $this->productRelations;
+        foreach ($productRelations as $productRelation) {
+            if($productRelation->product == $id) {
+                return $productRelation->getProduct();
+            }
+        }
+        throw new \DomainException('Product not found');
+    }
+
+    /**
+     * @param int $id
+     * @return Products
+     */
+    public function findProduct(int $id) {
+        $productRelations = $this->productRelations;
+        foreach ($productRelations as $productRelation) {
+            if($productRelation->product == $id) {
+                return $productRelation->getProduct();
+            }
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    public function isStatusAtWarehouse() : bool {
+        return $this->status == BoxesStatus::AT_WAREHOUSE;
+    }
+
+    /**
+     * @return bool
+     */
+    public function existShippedQtyAndReceivedQtyDistinction() : bool {
+        return Products::find()
+            ->alias('p')
+            ->where(['p.id' => $this->getProductRelations()->select('product')->column()])
+            ->andWhere('NOT EXISTS (SELECT * FROM ' . Products::tableName() . ' pp WHERE pp.received_qty!=p.shipped_qty AND pp.id=p.id)')
+            ->exists();
     }
 
     /**

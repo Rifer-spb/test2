@@ -12,6 +12,8 @@ use Yii;
  */
 class BoxesStatus extends \yii\db\ActiveRecord
 {
+    const AT_WAREHOUSE = 2;
+
     /**
      * {@inheritdoc}
      */

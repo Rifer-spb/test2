@@ -2,13 +2,15 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Entities\Boxes\Boxes;
 
 /** @var yii\web\View $this */
 /** @var common\models\Entities\Products\Products $model */
+/** @var Boxes $box */
 
 $this->title = 'Update Products: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => 'Boxes', 'url' => ['boxes/index']];
+$this->params['breadcrumbs'][] = ['label' => $box->title, 'url' => ['boxes/view', 'id' => $box->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="products-update">

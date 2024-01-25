@@ -3,7 +3,6 @@
 namespace common\models\Forms\Boxes\Products;
 
 use common\models\Entities\Products\Products;
-use yii\base\Model;
 
 /**
  * Class AddForm

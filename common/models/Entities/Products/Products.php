@@ -2,6 +2,9 @@
 
 namespace common\models\Entities\Products;
 
+use common\models\Entities\Boxes\BoxesProduct;
+use yii\db\ActiveQuery;
+
 /**
  * This is the model class for table "{{%products}}".
  *
@@ -11,6 +14,8 @@ namespace common\models\Entities\Products;
  * @property int $shipped_qty Shipped Qty
  * @property int $received_qty Received Qty
  * @property float $price Price
+ *
+ * @property BoxesProduct $boxProductRelation
  *
  */
 class Products extends \yii\db\ActiveRecord
@@ -41,4 +46,25 @@ class Products extends \yii\db\ActiveRecord
         return $model;
     }
 
+    /**
+     * @param string $title
+     * @param string $sku
+     * @param int $shipped_qty
+     * @param int $received_qty
+     * @param float $price
+     */
+    public function edit(string $title, string $sku, int $shipped_qty, int $received_qty, float $price) {
+        $this->title = $title;
+        $this->sku = $sku;
+        $this->shipped_qty = $shipped_qty;
+        $this->received_qty = $received_qty;
+        $this->price = $price;
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getBoxProductRelation() : ActiveQuery {
+        return $this->hasOne(BoxesProduct::class, ['product' => 'id']);
+    }
 }

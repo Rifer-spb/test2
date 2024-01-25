@@ -41,7 +41,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<controller>/<action>' => '<controller>/<action>'
+                'boxes/<action>' => 'boxes/default/<action>',
+                'boxes/<controller>/<action>' => 'boxes/<controller>/<action>'
             ],
         ],
     ],

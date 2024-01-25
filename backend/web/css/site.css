@@ -92,3 +92,28 @@ a.desc:after {
 .help-block {
     color: red;
 }
+
+.pagination li>span,
+.pagination li>a {
+    padding: 5px 10px;
+    border: 1px solid #c3c3c3;
+    background-color: #ededed;
+    border-right: none;
+    text-decoration: none;
+}
+
+.pagination li:last-child>span,
+.pagination li:last-child>a {
+    border-right: 1px solid #c3c3c3;
+}
+
+.pagination li>span:hover,
+.pagination li>a:hover {
+    background-color: #c9c9c9;
+}
+
+.pagination li.active>span,
+.pagination li.active>a {
+    background-color: #3383f5;
+    color: #ffffff;
+}

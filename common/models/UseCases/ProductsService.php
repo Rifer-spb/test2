@@ -3,6 +3,7 @@
 namespace common\models\UseCases;
 
 use common\models\Forms\Boxes\Products\AddForm;
+use common\models\Forms\Boxes\Products\EditForm;
 use common\models\Repositories\BoxesRepository;
 use common\models\Service\TransactionManager;
 
@@ -48,6 +49,27 @@ class ProductsService
             $transaction->rollBack();
             throw $e;
         }
+
+    }
+
+    /**
+     * @param int $boxId
+     * @param EditForm $form
+     */
+    public function edit(int $boxId, EditForm $form) {
+
+        $box = $this->boxesRepository->get($boxId);
+
+        $box->editProduct(
+            $form->id,
+            $form->title,
+            $form->sku,
+            $form->shipped_qty,
+            $form->received_qty,
+            $form->price
+        );
+
+        $this->boxesRepository->save($box);
 
     }
 }
