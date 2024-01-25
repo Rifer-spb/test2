@@ -180,7 +180,7 @@ class Boxes extends \yii\db\ActiveRecord
         return Products::find()
             ->alias('p')
             ->where(['p.id' => $this->getProductRelations()->select('product')->column()])
-            ->andWhere('NOT EXISTS (SELECT * FROM ' . Products::tableName() . ' pp WHERE pp.received_qty!=p.shipped_qty AND pp.id=p.id)')
+            ->andWhere('(SELECT pp.received_qty FROM ' . Products::tableName() . ' pp WHERE pp.id=p.id)!=p.shipped_qty')
             ->exists();
     }
 

@@ -2,6 +2,7 @@
 
 namespace backend\controllers\boxes;
 
+use common\models\Entities\Products\Products;
 use common\models\Forms\Boxes\ChangeStatusForm;
 use common\models\Forms\Boxes\ChangeWeightForm;
 use Yii;
@@ -199,6 +200,9 @@ class DefaultController extends Controller
         if($form->load(Yii::$app->request->post(),'')) {
             if(!$form->validate()) {
                 return ['errorValidate' => ActiveForm::validate($form)];
+            }
+            if($model->isStatusAtWarehouse() and !$form->value) {
+                return $this->redirect(Yii::$app->request->referrer);
             }
             try {
                 $this->service->changeWeight($model->id, $form);
