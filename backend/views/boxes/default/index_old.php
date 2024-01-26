@@ -6,6 +6,7 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\grid\CheckboxColumn;
+use yii\jui\DatePicker;
 use common\models\Entities\Boxes\Boxes;
 
 /** @var yii\web\View $this */
@@ -24,7 +25,41 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Boxes', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php echo $this->render('_search', ['model' => $searchModel, 'statuses' => $statuses]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <div class="date-range">
+        <div>
+            <label><b>Date from</b></label>
+            <?= DatePicker::widget([
+                'model' => $searchModel,
+                'attribute' => 'date_from',
+                'language' => 'ru',
+                'dateFormat' => 'dd-MM-yyyy',
+                'options' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Select date'
+                ]
+            ]);?>
+        </div>
+        <div>
+            <label><b>Date to</b></label>
+            <?= DatePicker::widget([
+                'model' => $searchModel,
+                'attribute' => 'date_to',
+                'language' => 'ru',
+                'dateFormat' => 'dd-MM-yyyy',
+                'options' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Select date'
+                ]
+            ]);?>
+        </div>
+    </div>
+
+    <div>
+        <label><b>Search</b></label>
+        <?= Html::activeInput('text', $searchModel, 'info') ?>
+    </div>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -34,14 +69,14 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => CheckboxColumn::class,
             ],
-            [
-                'attribute' => 'id',
-                'filter' => false
-            ],
+            'id',
             [
                 'attribute' => 'date_created',
                 'format' => ['datetime', 'php:d.m.Y H:i:s'],
-                'filter' => false
+                'filter' => [
+                    'format' => 'raw',
+                    'value' => 'dawd'
+                ]
             ],
             [
                 'attribute' => 'weight',
@@ -51,8 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         $html .= Html::activeInput('text',$model,'weight', ['class' => 'form-control']);
                     $html .="</form>";
                     return $html;
-                },
-                'filter' => false
+                }
             ],
             [
                 'attribute' => 'status',
@@ -77,8 +111,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     );
                     $html .="</form>";
                     return $html;
-                },
-                'filter' => false
+                }
             ],
             [
                 'class' => ActionColumn::class,
@@ -136,8 +169,13 @@ JS
 
 $this->registerCss(<<<CSS
 
-    #w1-filters {
-        display: none;
+    .date-range {
+        margin-bottom: 10px;
+    }
+
+    .date-range>div {
+        display: inline-block;
+        vertical-align: middle;
     }    
 
 CSS

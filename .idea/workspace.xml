@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85fab864-d6bf-4f95-9e4b-0eaf5aca6079" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/views/boxes/default/index_old.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/test2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/boxes/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/boxes/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/models/Entities/Boxes/Boxes.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Entities/Boxes/Boxes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/assets/AppAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/assets/AppAsset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/boxes/default/_search.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/boxes/default/_search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/boxes/default/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/boxes/default/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/web/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/Forms/Boxes/SearchForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Forms/Boxes/SearchForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,7 +19,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -118,6 +125,12 @@
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/npm-asset/bootstrap" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap4" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datepicker" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/jquery-ui" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-jui" />
     </include_path>
   </component>
   <component name="ProjectId" id="2bPK3cnmiuhSawySQnxQZCJzZFH" />
@@ -128,23 +141,23 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowTODO.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/common/models/Forms/Boxes/Products" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/views/boxes/default" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes\Products" />
-      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes" />
-      <recent name="E:\OpenServer\domains\test2\common\models\Repositories" />
-      <recent name="E:\OpenServer\domains\test2\common\models\Entities" />
-      <recent name="E:\OpenServer\domains\test2\common\models\UseCases" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\OpenServer\domains\test2\backend\views\boxes" />
       <recent name="E:\OpenServer\domains\test2\backend\views\boxes\default" />
       <recent name="E:\OpenServer\domains\test2\backend\controllers\boxes" />
       <recent name="E:\OpenServer\domains\test2\backend\views" />
       <recent name="E:\OpenServer\domains\test2\backend\controllers" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\OpenServer\domains\test2\backend\views\boxes\default" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes\Products" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Repositories" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Entities" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -176,7 +189,10 @@
       <option name="presentableId" value="Default" />
       <updated>1706111075627</updated>
       <workItem from="1706111077742" duration="22886000" />
-      <workItem from="1706175261183" duration="15491000" />
+      <workItem from="1706175261183" duration="16149000" />
+      <workItem from="1706213998507" duration="1150000" />
+      <workItem from="1706255215172" duration="194000" />
+      <workItem from="1706259571747" duration="7454000" />
     </task>
     <servers />
   </component>
