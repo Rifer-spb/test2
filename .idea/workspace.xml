@@ -2,16 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85fab864-d6bf-4f95-9e4b-0eaf5aca6079" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/views/boxes/default/index_old.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/test2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Forms/Boxes/ChangeStatusAllForm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Forms/Boxes/ExportForm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Helper/FileHelper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/Helper/Helper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/assets/AppAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/assets/AppAsset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/boxes/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/boxes/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/boxes/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/boxes/ProductsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/views/boxes/default/_search.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/boxes/default/_search.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/views/boxes/default/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/boxes/default/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/web/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/boxes/default/index_old.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/boxes/products/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/boxes/products/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/Entities/Boxes/Boxes.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Entities/Boxes/Boxes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/Entities/Boxes/BoxesProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Entities/Boxes/BoxesProduct.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/models/Forms/Boxes/SearchForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Forms/Boxes/SearchForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/Repositories/BoxesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Repositories/BoxesRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/UseCases/BoxesService.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/UseCases/BoxesService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/UseCases/ProductsService.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/UseCases/ProductsService.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -141,23 +149,23 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowTODO.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/views/boxes/default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/common/models" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\OpenServer\domains\test2\common\models" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes" />
+      <recent name="E:\OpenServer\domains\test2\backend\views\boxes\default" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes\Products" />
+      <recent name="E:\OpenServer\domains\test2\common\models\Repositories" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\OpenServer\domains\test2\backend\views\boxes" />
       <recent name="E:\OpenServer\domains\test2\backend\views\boxes\default" />
       <recent name="E:\OpenServer\domains\test2\backend\controllers\boxes" />
       <recent name="E:\OpenServer\domains\test2\backend\views" />
       <recent name="E:\OpenServer\domains\test2\backend\controllers" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\OpenServer\domains\test2\backend\views\boxes\default" />
-      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes\Products" />
-      <recent name="E:\OpenServer\domains\test2\common\models\Forms\Boxes" />
-      <recent name="E:\OpenServer\domains\test2\common\models\Repositories" />
-      <recent name="E:\OpenServer\domains\test2\common\models\Entities" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -192,7 +200,8 @@
       <workItem from="1706175261183" duration="16149000" />
       <workItem from="1706213998507" duration="1150000" />
       <workItem from="1706255215172" duration="194000" />
-      <workItem from="1706259571747" duration="7454000" />
+      <workItem from="1706259571747" duration="7524000" />
+      <workItem from="1706267924876" duration="14941000" />
     </task>
     <servers />
   </component>

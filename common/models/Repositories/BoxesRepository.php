@@ -3,6 +3,7 @@
 namespace common\models\Repositories;
 
 use common\models\Entities\Boxes\Boxes;
+use yii\db\ActiveRecord;
 
 class BoxesRepository
 {
@@ -35,5 +36,13 @@ class BoxesRepository
             throw new \DomainException('Box not found');
         }
         return $model;
+    }
+
+    /**
+     * @param array $ids
+     * @return Boxes[]|ActiveRecord[]
+     */
+    public function findAllByIds(array $ids) {
+        return Boxes::find()->where(['id' => $ids])->all();
     }
 }

@@ -46,5 +46,8 @@ return [
             ],
         ],
     ],
+    'aliases' => [
+        '@Web' => dirname(__DIR__) . '/web',
+    ],
     'params' => $params,
 ];

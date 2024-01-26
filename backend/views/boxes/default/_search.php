@@ -47,7 +47,7 @@ use yii\widgets\ActiveForm;
             'options' => [
                 'value' => ''
             ]
-        ]]    // options
+        ]]
     ); ?>
 
     <div class="form-group">

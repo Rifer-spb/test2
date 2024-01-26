@@ -2,22 +2,23 @@
 
 namespace backend\controllers\boxes;
 
-use common\models\Entities\Products\Products;
-use common\models\Forms\Boxes\ChangeStatusForm;
-use common\models\Forms\Boxes\ChangeWeightForm;
 use Yii;
 use yii\web\Response;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\widgets\ActiveForm;
 use yii\web\NotFoundHttpException;
 use common\models\Entities\Boxes\Boxes;
-use common\models\Forms\Boxes\SearchForm as SearchBoxesForm;
 use common\models\Forms\Boxes\AddForm;
 use common\models\Forms\Boxes\EditForm;
 use common\models\UseCases\BoxesService;
 use common\models\ReadModels\BoxesReadRepository;
+use common\models\Forms\Boxes\ChangeStatusAllForm;
+use common\models\Forms\Boxes\ChangeStatusForm;
+use common\models\Forms\Boxes\ChangeWeightForm;
+use common\models\Forms\Boxes\ExportForm;
+use common\models\Forms\Boxes\SearchForm as SearchBoxesForm;
 use common\models\Forms\Boxes\Products\SearchForm as SearchProductsForm;
-use yii\widgets\ActiveForm;
 
 /**
  * BoxesController implements the CRUD actions for Boxes model.
@@ -213,6 +214,72 @@ class DefaultController extends Controller
 
         return $this->redirect(Yii::$app->request->referrer);
 
+    }
+
+    /**
+     * @return Response
+     */
+    public function actionChangeStatusAll() {
+
+        $form = new ChangeStatusAllForm();
+        if($form->load(Yii::$app->request->post(),'') && $form->validate()) {
+            try {
+                $this->service->changeStatusAll($form);
+            } catch (\Exception $e) {
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->redirect(Yii::$app->request->referrer);
+
+    }
+
+    /**
+     * @return void|null
+     */
+    public function actionExportExel() {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $searchModel = new SearchBoxesForm(true);
+        $file = $searchModel->createExport($this->request->queryParams);
+        if(!$file) {
+            return null;
+        }
+        return Yii::$app->response->sendFile($file['path'])->on(\yii\web\Response::EVENT_AFTER_SEND, function($event) {
+            unlink($event->data);
+        }, $file['path']);
+    }
+
+    /**
+     * @param $id
+     * @return float|int
+     * @throws NotFoundHttpException
+     */
+    public function actionCountVolume($id) {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $model = $this->findModel($id);
+        return $model->countVolume();
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     * @throws NotFoundHttpException
+     */
+    public function actionCountPrice($id) {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $model = $this->findModel($id);
+        return $model->countPrice();
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     * @throws NotFoundHttpException
+     */
+    public function actionCheckDistinction($id) {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $model = $this->findModel($id);
+        return $model->existShippedQtyAndReceivedQtyDistinction();
     }
 
     /**

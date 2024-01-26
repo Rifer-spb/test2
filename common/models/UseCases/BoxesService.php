@@ -3,8 +3,10 @@
 namespace common\models\UseCases;
 
 use common\models\Entities\Boxes\Box;
+use common\models\Entities\Boxes\BoxesStatus;
 use common\models\Forms\Boxes\AddForm;
 use common\models\Entities\Boxes\Boxes;
+use common\models\Forms\Boxes\ChangeStatusAllForm;
 use common\models\Forms\Boxes\ChangeStatusForm;
 use common\models\Forms\Boxes\ChangeWeightForm;
 use common\models\Forms\Boxes\EditForm;
@@ -89,7 +91,7 @@ class BoxesService
 
         $model = $this->boxesRepository->get($id);
 
-        if($model->isStatusAtWarehouse()) {
+        if($form->status == BoxesStatus::AT_WAREHOUSE) {
             if (!$model->weight || $model->existShippedQtyAndReceivedQtyDistinction()) {
                 throw new \DomainException('Status can not be At warehouse');
             }
@@ -98,6 +100,28 @@ class BoxesService
         $model->setStatus($form->status);
 
         $this->boxesRepository->save($model);
+    }
+
+    /**
+     * @param ChangeStatusAllForm $form
+     */
+    public function changeStatusAll(ChangeStatusAllForm $form) {
+
+        $boxes = $this->boxesRepository->findAllByIds($form->items);
+
+        foreach ($boxes as $box) {
+            if($form->status == BoxesStatus::AT_WAREHOUSE) {
+                if ($box->weight && !$box->existShippedQtyAndReceivedQtyDistinction()) {
+                    $box->setStatus($form->status);
+                }
+            } else {
+                $box->setStatus($form->status);
+            }
+
+            $this->boxesRepository->save($box);
+
+        }
+
     }
 
     /**

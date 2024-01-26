@@ -51,13 +51,20 @@ class ProductsController extends Controller
     }
 
     /**
-     * @param $id
+     * @param $boxId
+     * @param $productId
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionView($id) {
+    public function actionView($boxId,$productId) {
+
+        if(!$box = $this->boxesReadRepository->findBox($boxId)) {
+            throw new NotFoundHttpException('Page not found');
+        }
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'box' => $box,
+            'model' => $box->getProduct($productId),
         ]);
     }
 
@@ -122,16 +129,23 @@ class ProductsController extends Controller
     }
 
     /**
-     * Deletes an existing Products model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
+     * @param $boxId
+     * @param $productId
      * @return Response
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException
      */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
+    public function actionDelete($boxId, $productId) {
 
-        return $this->redirect(['index']);
+        if(!$box = $this->boxesReadRepository->findBox($boxId)) {
+            throw new NotFoundHttpException('Page not found');
+        }
+
+        try {
+            $this->service->delete($box->id, $productId);
+        } catch(\Exception $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
+        }
+
+        return $this->redirect(['boxes/index']);
     }
 }

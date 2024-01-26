@@ -72,4 +72,14 @@ class ProductsService
         $this->boxesRepository->save($box);
 
     }
+
+    /**
+     * @param int $boxId
+     * @param int $productId
+     */
+    public function delete(int $boxId, int $productId) {
+        $box = $this->boxesRepository->get($boxId);
+        $box->removeProduct($productId);
+        $this->boxesRepository->save($box);
+    }
 }
