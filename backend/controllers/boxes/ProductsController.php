@@ -2,16 +2,15 @@
 
 namespace backend\controllers\boxes;
 
-use common\models\Forms\Boxes\Products\EditForm;
 use Yii;
-use common\models\Entities\Products\Products;
+use yii\web\Response;
+use yii\web\Controller;
+use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
+use common\models\Forms\Boxes\Products\EditForm;
 use common\models\Forms\Boxes\Products\AddForm;
 use common\models\ReadModels\BoxesReadRepository;
 use common\models\UseCases\ProductsService;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use yii\web\Response;
 
 /**
  * ProductsController implements the CRUD actions for Products model.
