@@ -70,8 +70,6 @@ class ExportForm extends BoxesModel
             )');
         }
 
-        var_dump($dataProvider->getModels());exit();
-
         return $dataProvider;
     }
 
