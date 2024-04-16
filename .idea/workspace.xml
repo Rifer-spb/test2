@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="85fab864-d6bf-4f95-9e4b-0eaf5aca6079" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/models/Forms/Boxes/ExportForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Forms/Boxes/ExportForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/Entities/Boxes/Boxes.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Entities/Boxes/Boxes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/models/Entities/Boxes/BoxesProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Entities/Boxes/BoxesProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/console/migrations/m240124_165819_boxes_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/console/migrations/m240124_165819_boxes_product.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -133,6 +135,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowTODO.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/common/models" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -186,7 +193,9 @@
       <workItem from="1706255215172" duration="194000" />
       <workItem from="1706259571747" duration="7524000" />
       <workItem from="1706267924876" duration="15271000" />
-      <workItem from="1706356811406" duration="34000" />
+      <workItem from="1706356811406" duration="296000" />
+      <workItem from="1706359469844" duration="20000" />
+      <workItem from="1713270222002" duration="1636000" />
     </task>
     <servers />
   </component>
